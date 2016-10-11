@@ -69,7 +69,7 @@ $(function() {
 
     $.ajax({
 
-      'type': 'POST',
+      'type': 'GET',
       'url': 'recuperator.php',
       'dataType': 'html',
 

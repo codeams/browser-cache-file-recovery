@@ -13,9 +13,9 @@
 
   }
 
-  if ( isIndexValid( $_POST, 'cacheString' ) ) {
+  if ( isIndexValid( $_GET, 'cacheString' ) ) {
 
-    $cacheString = $_POST['cacheString'];
+    $cacheString = $_GET['cacheString'];
 
   } else die( '<textarea>Not enough parameters to proceed.</textarea>' );
 
