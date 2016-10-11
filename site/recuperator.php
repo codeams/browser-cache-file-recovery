@@ -19,7 +19,7 @@
 
   } else die( '<textarea>Not enough parameters to proceed.</textarea>' );
 
-?><textarea spellcheck='false'><?php
+?><textarea><?php
 
   $hexLines = array();
   preg_match_all('/(\s[0-9a-f]{2}){16}/', $cacheString, $hexLines);

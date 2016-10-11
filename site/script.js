@@ -46,6 +46,10 @@ $(function() {
       _this.$window.find( 'textarea' ).remove();
       _this.$window.append( textarea );
 
+      var newTextarea = _this.$window.find( 'textarea' );
+      newTextarea.attr( 'spellcheck', 'false' );
+      if ( newTextarea.val() === '' ) newTextarea.val( 'No results' );
+
       _this.show();
 
     };
@@ -104,7 +108,7 @@ $(function() {
   $recoverButton.on( 'click', function() {
 
     var cacheString = $inputTextarea.val();
-    callRecuperator( cacheString );
+    if ( cacheString !== '' ) callRecuperator( cacheString );
 
   });
 
