@@ -67,7 +67,7 @@ $(function() {
 
   };
 
-  var callRecuperator = function( cacheString ) {
+  var callRecuperator = function( cacheFileContent ) {
 
     var recoverButtonOriginalValue = $recoverButton.attr('value');
 
@@ -78,7 +78,7 @@ $(function() {
       'dataType': 'html',
 
       'data': {
-        'cacheString' : cacheString
+        'cacheFileContent' : cacheFileContent
       },
 
       beforeSend: function() {
@@ -107,8 +107,8 @@ $(function() {
 
   $recoverButton.on( 'click', function() {
 
-    var cacheString = $inputTextarea.val();
-    if ( cacheString !== '' ) callRecuperator( cacheString );
+    var cacheFileContent = $inputTextarea.val();
+    if ( cacheFileContent !== '' ) callRecuperator( cacheFileContent );
 
   });
 

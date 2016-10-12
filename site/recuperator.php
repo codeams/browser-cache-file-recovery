@@ -1,40 +1,94 @@
 <?php
 
-  sleep(2);
+/**
+ * Project: Browser cache file recovery
+ * Github project: https://github.com/codeams/browser-cache-file-recovery/
+ * License: MIT
+ *
+ * (c)2016 Alejandro Montanez
+ */
 
   function isIndexValid( $array, $index ) {
 
     $isIndexSet = isset( $array[ $index ] );
-    $isIndexValueNull = is_null( $array[ $index ] );
 
-    $isIndexValid = $isIndexSet && !$isIndexValueNull;
+    if ( $isIndexSet ) $isIndexValueNotNull = ! is_null( $array[ $index ] );
+    else return false;
 
-    return $isIndexValid;
+    if ( $isIndexValueNotNull ) return true;
+    else return false;
 
   }
 
-  if ( isIndexValid( $_POST, 'cacheString' ) ) {
+  function extractHexLines( $string ) {
 
-    $cacheString = $_POST['cacheString'];
+    $hexLines = [];
+    $regex = '/(\s[0-9a-f]{2}){16}/';
 
-  } else die( '<textarea>Not enough parameters to proceed.</textarea>' );
+    preg_match_all( $regex, $string, $hexLines );
 
-?><textarea><?php
+    return $hexLines[0];
 
-  $hexLines = array();
-  preg_match_all('/(\s[0-9a-f]{2}){16}/', $cacheString, $hexLines);
+  }
 
-  foreach ( $hexLines[0] as $hexLine ) {
+  function extractHexCharacters( $string ) {
 
-    $hexChars = array();
-    preg_match_all('/([0-9a-f]{2})/', $hexLine, $hexChars);
+    $hexCharacters = [];
+    $regex = '/([0-9a-f]{2})/';
 
-    foreach ( $hexChars[0] as $hexChar ) {
+    preg_match_all( $regex, $string, $hexCharacters );
 
-      echo chr( hexdec ( $hexChar ) );
+    return $hexCharacters[0];
+
+  }
+
+  function convertHexToCharacter( $hexCharacter ) {
+
+    $character = chr( hexdec( $hexCharacter ) );
+    return $character;
+
+  }
+
+  function getOriginalText( $cacheFileContent ) {
+
+    $originalText = '';
+
+    $hexLines = extractHexLines( $cacheFileContent );
+
+    foreach ( $hexLines as $hexLine ) {
+
+      $hexCharacters = extractHexCharacters( $hexLine );
+
+      foreach ( $hexCharacters as $hexCharacter ) {
+
+        $character = convertHexToCharacter( $hexCharacter );
+        $originalText .= $character;
+
+      }
 
     }
 
+    return $originalText;
+
   }
 
-?></textarea>
+  /* -- Run the process -- */
+
+  $isReceivedCacheFileContent = isIndexValid( $_POST, 'cacheFileContent' );
+
+  if ( $isReceivedCacheFileContent ) {
+
+    $cacheFileContent = $_POST['cacheFileContent'];
+    $originalText = getOriginalText( $cacheFileContent );
+
+    echo '<textarea>';
+    echo $originalText;
+    echo '</textarea>';
+
+  } else {
+
+    echo '<textarea>';
+    echo 'Not enough parameters to run the process.';
+    echo '</textarea>';
+
+  }
