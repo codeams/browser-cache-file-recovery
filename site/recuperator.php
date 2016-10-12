@@ -88,7 +88,7 @@
   } else {
 
     echo '<textarea>';
-    echo 'Not enough parameters to run the process.';
+    echo 'Not enough parameters to run the script.';
     echo '</textarea>';
 
   }
