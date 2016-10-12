@@ -1,25 +1,60 @@
 <?php
 
-  # Note: This will not print spaces and line-breaks
-  # print it inside a textarea if you need those.
+  # Note:
+  # If you paste the $originalText inside a html
+  # document you won't be able to see line-breaks
+  # or spaces, if you need those you should print
+  # it inside a <textarea>
 
-  # Paste in the cacheString value the
-  # cache text you copied from your browser.
-  $cacheString = '';
+  function extractHexLines( $string ) {
 
-  $hexLines = array();
-  preg_match_all('/(\s[0-9a-f]{2}){16}/', $cacheString, $hexLines);
+    $hexLines = [];
+    $regex = '/(\s[0-9a-f]{2}){16}/';
 
-  foreach ( $hexLines[0] as $hexLine ) {
+    preg_match_all( $regex, $string, $hexLines );
 
-    $hexChars = array();
-    preg_match_all('/([0-9a-f]{2})/', $hexLine, $hexChars);
+    return $hexLines[0];
 
-    foreach ( $hexChars[0] as $hexChar ) {
+  }
 
-      echo chr( hexdec ( $hexChar ) );
+  function extractHexCharacters( $string ) {
+
+    $hexCharacters = [];
+    $regex = '/([0-9a-f]{2})/';
+
+    preg_match_all( $regex, $string, $hexCharacters );
+
+    return $hexCharacters[0];
+
+  }
+
+  function convertHexToCharacter( $hexCharacter ) {
+
+    $character = chr( hexdec( $hexCharacter ) );
+    return $character;
+
+  }
+
+  function getOriginalText( $cacheFileContent ) {
+
+    $originalText = '';
+
+    $hexLines = extractHexLines( $cacheFileContent );
+
+    foreach ( $hexLines as $hexLine ) {
+
+      $hexCharacters = extractHexCharacters( $hexLine );
+
+      foreach ( $hexCharacters as $hexCharacter ) {
+
+        $character = convertHexToCharacter( $hexCharacter );
+        $originalText .= $character;
+
+      }
 
     }
+
+    return $originalText;
 
   }
 
