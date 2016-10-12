@@ -12,8 +12,8 @@ You can find the project running online at http://codeams.ml/file-recovery/
 ## Instructions
 
 1. Go to your browser's cache:
-  * Google Chrome: Type `chrome://cache` in the adress bar.
-  * Mozilla Firefox: Type `about:cache` in the adress. Then click "List Cache Entries" in the section your file is located. They are usually in the disk which you can access directly through `about:cache?storage=disk`.
+  * Google Chrome: Type `chrome://cache` in the address bar.
+  * Mozilla Firefox: Type `about:cache` in the address. Then click "List Cache Entries" in the section your file is located. They are usually in the disk which you can access directly through `about:cache?storage=disk`.
 1. Search your file's key (URL) and click it.
 1. Press `ctrl + A` or `⌘ + A` to select the entire content of the file and copy it.
 1. Insert the copied text in the textbox you'll find in [codeams.ml/file-recovery/](http://codeams.ml/file-recovery/).
@@ -22,8 +22,8 @@ Note:  You can do the last step in your own pc or server if you want to.
 
 ## Known issues
 
-1. If you're getting an *Unknown file type* error or a *No results* error try to copy only the content of the file. In chrome it's the second section only (the sections are divided by lines) and in firefox it's everything under the line where the weird numbers start.
-1. The script will ommit the last 0 to 15 characters of your file. See [the issue](https://github.com/codeams/browser-cache-file-recovery/issues/1/).
+1. If you're getting an *Unknown file type* error or a *No results* error try to copy only the content of the file. In chrome it's the second section only (the sections are divided by lines) and in firefox it's everything under the line.
+1. The script will omit the last 0 to 15 characters of your file. See [the issue](https://github.com/codeams/browser-cache-file-recovery/issues/1/).
 
 ## License
 
