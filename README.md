@@ -23,7 +23,7 @@ Note:  You can do the last step in your own pc or server if you want to.
 ## Known issues
 
 1. If you're getting an *Unknown file type* error or a *No results* error try to copy only the content of the file. In chrome it's the second section only (the sections are divided by lines) and in firefox it's everything under the line where the weird numbers start.
-1. The script will ommit the last 0 to 15 characters of your file. See [the issue](#1).
+1. The script will ommit the last 0 to 15 characters of your file. See #1.
 
 ## License
 
