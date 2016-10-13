@@ -65,7 +65,7 @@
     # This regex works with chrome but doesn't width firefox:
     #'/(\s[0-9a-f]{2}){16}/'
 
-    $hexLines = [];
+    $hexLines = array();
     $regex = '/([a-z0-9]{2}( ){1,2}){16}/';
 
     preg_match_all( $regex, $string, $hexLines );
@@ -76,7 +76,7 @@
 
   function extractHexCharacters( $string ) {
 
-    $hexCharacters = [];
+    $hexCharacters = array();
     $regex = '/([0-9a-f]{2})/';
 
     preg_match_all( $regex, $string, $hexCharacters );
