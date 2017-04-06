@@ -311,7 +311,7 @@
 
     echo '<textarea>';
     echo "Not enough parameters to run the script.\n";
-    echo 'This is likely to be a client-server communication error.';
+    echo 'This is likely to be a communication error.';
     echo '</textarea>';
 
   }
