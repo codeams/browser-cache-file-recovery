@@ -1,30 +1,5 @@
 # Browser cache file recovery
 
-Recover the original text of a file from the cache file browsers hold.  
-You can find the project running online at http://codeams.ml/file-recovery/
-
-**Notes:**
-  1. This project has been tested only in Google Chrome 53 and Mozilla Firefox 49.
-  1. This project can recover only text-base files. Binary files like images or videos are not supported.
-  1. The online site's file recovery is done server side but it does not keep any kind of record of the files sent.
-  1. Feel free to download the project and use it in your own pc or server.
-
-## Instructions
-
-1. Go to your browser's cache:
-  * Google Chrome: Type `chrome://cache` in the address bar.
-  * Mozilla Firefox: Type `about:cache` in the address. Then click "List Cache Entries" in the section your file is located. They are usually in the disk which you can access directly through `about:cache?storage=disk`.
-1. Search your file's key (URL) and click it.
-1. Press `ctrl + A` or `⌘ + A` to select the entire content of the file and copy it.
-1. Insert the copied text in the textbox you'll find in [codeams.ml/file-recovery/](http://codeams.ml/file-recovery/).
-
-Note:  You can do the last step in your own pc or server if you want to.
-
-## Known issues
-
-1. If you're getting an *Unknown file type* error or a *No results* error try to copy only the content of the file. In chrome it's the second section only (the sections are divided by lines) and in firefox it's everything under the line.
-1. The script will omit the last 0 to 15 characters of your file. See [the issue](https://github.com/codeams/browser-cache-file-recovery/issues/1/).
-
 ## License
 
 MIT License
